@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FUT Minna SSTE Timetable Management System</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="topbar"><div><h1>FUT Minna</h1><p>School of Science and Technology Education</p></div><span id="roleBadge" class="badge">Not signed in</span></header>
+<main class="container">
+<section id="loginView" class="card login-card"><h2>Timetable Management Portal</h2><p>Sign in as General Administrator or Department Focal Person.</p>
+<form id="loginForm"><label>Username<input id="username" required></label><label>Password<input id="password" type="password" required></label><button>Sign in</button></form><div class="demo"><b>Demo:</b> admin/admin123 · ite_focal/ite123</div></section>
+<section id="appView" class="hidden">
+<nav class="tabs"><button data-tab="dashboard">Dashboard</button><button data-tab="courses">Courses</button><button data-tab="venues">Department Venues</button><button data-tab="timetable">Master Timetable</button><button data-tab="submissions" class="admin-only">Submissions</button></nav>
+<section id="dashboard" class="tab card"><div class="section-head"><div><h2>Faculty Dashboard</h2><p id="welcome"></p></div><button id="logout" class="secondary">Sign out</button></div><div class="stats" id="stats"></div><div class="grid2"><div><h3>Department summary</h3><div id="deptSummary"></div></div><div><h3>Venue summary</h3><div id="venueSummary"></div></div></div></section>
+<section id="courses" class="tab card hidden"><h2>Courses</h2><form id="courseForm" class="form-grid"><input id="cCode" placeholder="Course code" required><input id="cTitle" placeholder="Course title" required><input id="cLevel" placeholder="Level e.g. 300" required><input id="cStudents" type="number" placeholder="Students" required><input id="cLecturer" placeholder="Lecturer" required><select id="cType"><option>Lecture</option><option>Practical</option><option>Laboratory</option><option>Workshop</option></select><input id="cDuration" type="number" min="1" value="1" placeholder="Periods"><input id="cShared" placeholder="Shared group (optional)"><input id="cAllowed" class="wide" placeholder="Allowed venues, comma-separated"><button class="wide">Add course</button></form><div id="courseTable"></div></section>
+<section id="venues" class="tab card hidden"><h2>Department Available Venues</h2><p class="muted">Each focal person should submit venues available to their department. Admin sees and consolidates all submissions.</p><form id="venueForm" class="form-grid"><input id="vName" placeholder="Venue name" required><input id="vCapacity" type="number" placeholder="Capacity" required><select id="vType"><option>Lecture</option><option>Laboratory</option><option>Workshop</option><option>Studio</option><option>Seminar</option></select><input id="vDays" class="wide" placeholder="Days e.g. Monday,Wednesday or All"><input id="vPeriods" class="wide" placeholder="Periods e.g. 0,1,2 or All"><button class="wide">Add venue</button></form><div id="venueTable"></div></section>
+<section id="timetable" class="tab card hidden"><div class="section-head"><div><h2>Master Timetable</h2><p class="muted">Admin generates the master timetable; focal persons can filter it by department.</p></div><div class="actions"><select id="deptFilter"></select><button id="generate" class="admin-only">Optimise Timetable</button><button id="exportCsv" class="secondary">Export CSV</button></div></div><div id="ttTable"></div></section>
+<section id="submissions" class="tab card hidden"><h2>Department Submissions</h2><div id="submissionTable"></div></section>
+</section></main><script src="js/app.js"></script></body></html>
